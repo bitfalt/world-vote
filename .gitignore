@@ -23,11 +23,13 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# vscode setting folder
+.vscode
+
 # Foundry ignore
 cache/
 out/
-.vscode
-.idea
 
 # Xata ignore
 frontend/.xatarc
+.xata/
