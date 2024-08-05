@@ -6,18 +6,42 @@ import type {
   XataRecord,
 } from "@xata.io/client";
 
-const tables = [] as const;
+const tables = [
+  {
+    name: "Polls",
+    columns: [
+      { name: "category", type: "link", link: { table: "Category" } },
+      { name: "smartContractAddress", type: "string", unique: true },
+      { name: "name", type: "string", notNull: true, defaultValue: "none" },
+    ],
+  },
+  {
+    name: "Category",
+    columns: [
+      { name: "name", type: "string", notNull: true, defaultValue: "TBD" },
+    ],
+    revLinks: [{ column: "category", table: "Polls" }],
+  },
+] as const;
 
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
 
-export type DatabaseSchema = {};
+export type Polls = InferredTypes["Polls"];
+export type PollsRecord = Polls & XataRecord;
+
+export type Category = InferredTypes["Category"];
+export type CategoryRecord = Category & XataRecord;
+
+export type DatabaseSchema = {
+  Polls: PollsRecord;
+  Category: CategoryRecord;
+};
 
 const DatabaseClient = buildClient();
 
 const defaultOptions = {
-  databaseURL:
-    "https://bitfalt-mmda85.us-east-1.xata.sh/db/world-vote:main",
+  databaseURL: "https://bitfalt-mmda85.us-east-1.xata.sh/db/world-vote:main",
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {
