@@ -28,3 +28,6 @@ cache/
 out/
 .vscode
 .idea
+
+# Xata ignore
+frontend/.xatarc
