@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const PollCreation: React.FC = () => {
   const [pollName, setPollName] = useState('');
   const [category, setCategory] = useState('');
+  const [categories, setCategories] = useState<string[]>([]);
   const [options, setOptions] = useState(['', '']);
   const [isPublic, setIsPublic] = useState(true);
   const [pollCode, setPollCode] = useState('');
@@ -10,12 +11,24 @@ const PollCreation: React.FC = () => {
 
   useEffect(() => {
     generatePollCode();
+    getCategories();
   }, []);
 
   const generatePollCode = () => {
     const newCode = Math.floor(1000 + Math.random() * 9000).toString();
     setPollCode(newCode);
   };
+
+  const getCategories = async () => {
+    try {
+      const response = await fetch('/api/category/categories.json');
+      const data = await response.json();
+      const categoryNames = data.map((category: { name: string }) => category.name);
+      setCategories(categoryNames); // Assuming the response is an array of category names
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  }
 
   const addOption = () => {
     setOptions([...options, '']);
@@ -55,7 +68,7 @@ const PollCreation: React.FC = () => {
         </button>
         {isDropdownOpen && (
           <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
-            {["Category 1", "Category 2", "Category 3"].map((cat) => (
+            {categories.map((cat) => (
               <div
                 key={cat}
                 className="px-3 py-2 cursor-pointer hover:bg-gray-100"
