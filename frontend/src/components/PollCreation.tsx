@@ -93,7 +93,7 @@ const PollCreation: React.FC = () => {
         ))}
         <button
           onClick={addOption}
-          className="w-full px-3 py-2 text-blue-500 bg-white border border-blue-500 rounded-md hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 text-black bg-white border border-black rounded-md hover:bg-gray-200 focus:outline-none"
         >
           + Add Option
         </button>
@@ -102,16 +102,16 @@ const PollCreation: React.FC = () => {
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={() => setIsPublic(true)}
-          className={`w-1/2 mr-2 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            isPublic ? "bg-blue-500 text-white" : "bg-white text-blue-500 border border-blue-500"
+          className={`w-1/2 mr-2 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black ${
+            isPublic ? "bg-black text-white" : "bg-white text-black border border-black hover:bg-gray-200"
           }`}
         >
           Public
         </button>
         <button
           onClick={() => setIsPublic(false)}
-          className={`w-1/2 ml-2 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            !isPublic ? "bg-blue-500 text-white" : "bg-white text-blue-500 border border-blue-500"
+          className={`w-1/2 ml-2 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black ${
+            !isPublic ? "bg-black text-white" : "bg-white text-black border border-black hover:bg-gray-200"
           }`}
         >
           Private
@@ -126,7 +126,7 @@ const PollCreation: React.FC = () => {
 
       <button
         onClick={handleCreatePoll}
-        className="w-full px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-3 py-2 text-white bg-black rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-700"
       >
         Create Poll
       </button>
