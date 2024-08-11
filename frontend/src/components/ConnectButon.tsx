@@ -1,9 +1,7 @@
-import React from "react";
 import {
   ThirdwebProvider,
   ConnectButton,
   darkTheme,
-  type ConnectButtonProps,
 } from "thirdweb/react";
 import { baseSepolia } from "thirdweb/chains";
 import {
