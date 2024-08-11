@@ -1,5 +1,7 @@
 ---
-import PollCreation from "@components/PollCreation"
+import PollCreation from "@components/PollCreation.tsx";
+import Layout from "@layouts/Layout.astro";
 ---
-
-<PollCreation client:load/>
+<Layout title="Create Poll">
+    <PollCreation client:load/>
+</Layout>
