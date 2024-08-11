@@ -13,6 +13,8 @@ const tables = [
       { name: "category", type: "link", link: { table: "Category" } },
       { name: "smartContractAddress", type: "string", unique: true },
       { name: "name", type: "string", notNull: true, defaultValue: "none" },
+      { name: "private", type: "int", notNull: true, defaultValue: "0" },
+      { name: "pollCode", type: "int", unique: true },
     ],
   },
   {
@@ -21,6 +23,13 @@ const tables = [
       { name: "name", type: "string", notNull: true, defaultValue: "TBD" },
     ],
     revLinks: [{ column: "category", table: "Polls" }],
+  },
+  {
+    name: "Attestations",
+    columns: [
+      { name: "walletAddress", type: "string", unique: true },
+      { name: "attestationUID", type: "string", unique: true },
+    ],
   },
 ] as const;
 
@@ -33,9 +42,13 @@ export type PollsRecord = Polls & XataRecord;
 export type Category = InferredTypes["Category"];
 export type CategoryRecord = Category & XataRecord;
 
+export type Attestations = InferredTypes["Attestations"];
+export type AttestationsRecord = Attestations & XataRecord;
+
 export type DatabaseSchema = {
   Polls: PollsRecord;
   Category: CategoryRecord;
+  Attestations: AttestationsRecord;
 };
 
 const DatabaseClient = buildClient();
