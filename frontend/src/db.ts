@@ -56,3 +56,11 @@ export async function getPollInformation(name: string) {
 
     return poll;
 };
+
+export async function getCategories() {
+    const xata = createXataClient();
+
+    const categories = await xata.db.Category.getAll();
+
+    return categories;
+}
