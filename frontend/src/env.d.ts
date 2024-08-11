@@ -1,7 +1,7 @@
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
-    readonly XATA_APY_KEY: string
+    readonly XATA_API_KEY: string
     readonly XATA_BRANCH?: string
 }
 

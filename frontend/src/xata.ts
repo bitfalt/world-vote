@@ -54,7 +54,7 @@ export type DatabaseSchema = {
 const DatabaseClient = buildClient();
 
 const defaultOptions = {
-  databaseURL: "https://bitfalt-mmda85.us-east-1.xata.sh/db/world-vote:main",
+  databaseURL: "https://bitfalt-mmda85.us-east-1.xata.sh/db/world-vote",
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {
