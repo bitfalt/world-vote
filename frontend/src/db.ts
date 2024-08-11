@@ -41,3 +41,18 @@ export async function getPollAddressByCode(code: number) {
 
     return address;
 };
+
+export async function getPollInformation(name: string) {
+    const xata = createXataClient();
+
+    const poll = await xata.db.Polls
+    .select([
+        'name',
+        'category',
+        'smartContractAddress',        
+    ]).filter({
+        name: name
+    }).getFirst();
+
+    return poll;
+};
