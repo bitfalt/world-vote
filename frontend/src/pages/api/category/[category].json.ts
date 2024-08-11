@@ -1,5 +1,6 @@
 import { getPollByCategory } from "../../../db";
 
+// @ts-expect-error
 export async function GET({ params }) {
     const { category } = params;
     const polls = await getPollByCategory(category);
