@@ -63,4 +63,14 @@ export async function getCategories() {
     const categories = await xata.db.Category.getAll();
 
     return categories;
+};
+
+export async function getExistingCodes(code: number) {
+    const xata = createXataClient();
+
+    const codes = await xata.db.Polls.filter({
+        private: { $isNot: 0 }
+    }).select(["pollCode"]).getAll();
+
+    return codes;
 }
