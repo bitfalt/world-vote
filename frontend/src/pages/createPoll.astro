@@ -1,7 +1,10 @@
 ---
 import PollCreation from "@components/PollCreation.tsx";
 import Layout from "@layouts/Layout.astro";
+
+const clientId = import.meta.env.THIRDWEB_CLIENT_ID;
+
 ---
 <Layout title="Create Poll">
-    <PollCreation client:load/>
-</Layout>
+    <PollCreation clientId={clientId}client:load/>
+</Layout>    

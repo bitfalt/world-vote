@@ -2,10 +2,16 @@
 import Navbar from "../components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import '@fontsource-variable/bricolage-grotesque';
+import { ThirdwebProvider, useActiveAccount } from 'thirdweb/react';
+import ConnectButtonComponent from "@components/ConnectButon.tsx";
+
+const clientId = import.meta.env.THIRDWEB_CLIENT_ID;
 
 export interface Props {
   title: string;
 }
+
+//const wallet = useActiveAccount();
 
 ---
 
@@ -20,8 +26,10 @@ export interface Props {
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
   </head>
   <body>
-    <Navbar />
-    <slot />
+    <ThirdwebProvider client:load>
+      <Navbar />
+      <slot />
+    </ThirdwebProvider>
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */

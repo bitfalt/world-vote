@@ -30,6 +30,8 @@ const ConnectButtonComponent = ({ clientId }) => {
     clientId: clientId,
   });
 
+
+  
   return (
     <ThirdwebProvider>
       <ConnectButton
