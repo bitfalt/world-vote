@@ -14,12 +14,8 @@ contract PublicPoll {
  
    function castVote(string memory _option, bytes32 _nullifier) public {
         // Check if the user hasn't voted already
-        require(!_checkNullifier(_nullifier));
+        require(!nullifiers[_nullifier], "User has already voted");
         votes[_option] += 1;
         emit Vote(msg.sender, _option);
-   }
-
-   function _checkNullifier(bytes32 _nullifier) internal view returns (bool) {
-        return nullifiers[_nullifier];
    }
 }
