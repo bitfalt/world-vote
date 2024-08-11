@@ -15,6 +15,7 @@ const tables = [
       { name: "name", type: "string", notNull: true, defaultValue: "none" },
       { name: "private", type: "int", notNull: true, defaultValue: "0" },
       { name: "pollCode", type: "int", unique: true },
+      { name: "options", type: "multiple" },
     ],
   },
   {
