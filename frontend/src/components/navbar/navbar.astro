@@ -2,6 +2,10 @@
 import Container from "../container.astro";
 import Link from "../ui/link.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import ConnectButtonComponent from "@components/ConnectButon.tsx";
+
+const clientId = import.meta.env.THIRDWEB_CLIENT_ID
+
 
 const menuitems = [
   {
@@ -28,17 +32,10 @@ const menuitems = [
           <MenuIcon class="w-4 h-4 text-gray-800" />
         </div>
       </div>
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
-        <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#" style="muted" block size="md">Log in</Link>
-          <Link href="#" size="md" block>Sign up</Link>
-        </div>
-      </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <a href="#">Log in</a>
-        <Link href="#" size="md">World Id</Link>
+        <ConnectButtonComponent clientId={clientId} client:load/>
       </div>
     </div>
   </header>
