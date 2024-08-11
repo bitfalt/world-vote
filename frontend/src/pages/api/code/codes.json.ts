@@ -1,9 +1,9 @@
-import { getPollAddressByCode} from "../../../db";
+import { getExistingCodes} from "../../../db";
 
 // @ts-expect-error
 export async function GET({ params }) {
     const { code } = params;
-    const poll = await getPollAddressByCode(code);
+    const poll = await getExistingCodes();
 
     if (JSON.stringify(poll) === "[]") {
         return new Response(null, {

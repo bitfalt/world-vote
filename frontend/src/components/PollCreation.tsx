@@ -14,8 +14,14 @@ const PollCreation: React.FC = () => {
     getCategories();
   }, []);
 
-  const generatePollCode = () => {
-    const newCode = Math.floor(1000 + Math.random() * 9000).toString();
+  const generatePollCode = async () => {
+    const response = await fetch('api/code/codes.json');
+    const data = await response.json();
+    const existingCodes = data.map((item: {pollCode: number}) => item.pollCode.toString());
+    let newCode;
+    do {
+      newCode = Math.floor(1000 + Math.random() * 9000).toString();
+    } while (existingCodes.includes(newCode));
     setPollCode(newCode);
   };
 
@@ -24,7 +30,7 @@ const PollCreation: React.FC = () => {
       const response = await fetch('/api/category/categories.json');
       const data = await response.json();
       const categoryNames = data.map((category: { name: string }) => category.name);
-      setCategories(categoryNames); // Assuming the response is an array of category names
+      setCategories(categoryNames);
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
